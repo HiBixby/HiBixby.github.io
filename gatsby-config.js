@@ -15,8 +15,9 @@ module.exports = {
     siteUrl: `https://hibixby.github.io/`,
   },
   plugins: [
+    `gatsby-plugin-emotion`,
     {
-      resolve: "gatsby-plugin-typescript",
+      resolve: 'gatsby-plugin-typescript',
       options: {
         isTSX: true,
         allExtensions: true,
