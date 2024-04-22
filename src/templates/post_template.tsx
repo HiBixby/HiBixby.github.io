@@ -4,6 +4,7 @@ import { PostPageItemType } from 'types/PostItem.types' // 바로 아래에서 �
 import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
+import CommentWidget from 'components/Post/CommentWidgeet'
 
 type PostTemplateProps = {
   data: {
@@ -19,29 +20,15 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   },
 }) {
   const {
-    node: {
-      html,
-      frontmatter: {
-        title,
-        summary,
-        date,
-        categories,
-        thumbnail: {
-          childImageSharp: { gatsbyImageData },
-        },
-      },
-    },
+    node: { html, frontmatter },
   } = edges[0]
 
   return (
     <Template>
-      <PostHead
-        title={title}
-        date={date}
-        categories={categories}
-        thumbnail={gatsbyImageData}
-      />
+      <PostHead {...frontmatter} />
       <PostContent html={html} />
+      <CommentWidget />
+      sdf
     </Template>
   )
 }
