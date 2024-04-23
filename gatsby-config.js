@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: 'https://hibixby.github.io', // 배포 후 변경 예정
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
