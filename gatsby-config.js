@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: '<https://my-website.com/>',
+        siteUrl: 'https://hibixby.github.io/',
         stripQueryString: true,
       },
     },
