@@ -7,6 +7,7 @@ export type PostHeadInfoProps = {
   title: string
   date: string
   categories: string[]
+  timeToRead: number
 }
 
 const PostHeadInfoWrapper = styled.div`
@@ -42,7 +43,7 @@ const Title = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   font-size: 45px;
-  font-weight: 800;
+  font-weight: 700;
 `
 
 const PostData = styled.div`
@@ -51,13 +52,14 @@ const PostData = styled.div`
   align-items: center;
   margin-top: 10px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
 `
 
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
   title,
   date,
   categories,
+  timeToRead,
 }) {
   const goBackPage = () => window.history.back()
 
@@ -71,6 +73,7 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
         <div>{categories.join(' / ')}</div>
         <div>{date}</div>
       </PostData>
+      <div>{timeToRead} min read</div>
     </PostHeadInfoWrapper>
   )
 }

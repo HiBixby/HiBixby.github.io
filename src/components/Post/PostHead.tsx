@@ -33,11 +33,17 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
   date,
   categories,
   thumbnail,
+  timeToRead,
 }) {
   return (
     <PostHeadWrapper>
       <BackgroundImage image={thumbnail} alt="thumbnail" />
-      <PostHeadInfo title={title} date={date} categories={categories} />
+      <PostHeadInfo
+        title={title}
+        date={date}
+        categories={categories}
+        timeToRead={timeToRead}
+      />
     </PostHeadWrapper>
   )
 }

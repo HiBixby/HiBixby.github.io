@@ -26,6 +26,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   const {
     node: {
       html,
+      timeToRead,
       frontmatter: {
         title,
         summary,
@@ -46,6 +47,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         date={date}
         categories={categories}
         thumbnail={gatsbyImageData}
+        timeToRead={timeToRead}
       />
       <PostContent html={html} />
       <CommentWidget />
@@ -60,6 +62,7 @@ export const queryMarkdownDataBySlug = graphql`
       edges {
         node {
           html
+          timeToRead
           frontmatter {
             title
             summary
