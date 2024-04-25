@@ -2,13 +2,11 @@ import React, { FunctionComponent } from 'react'
 import { Global, css } from '@emotion/react'
 
 const defaultStyle = css`
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+KR:wght@100..900&display=swap');
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Noto Sans KR', sans-serif;
   }
 
   html,
@@ -22,6 +20,10 @@ const defaultStyle = css`
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+  }
+  body,
+  body * {
+    font-family: 'Noto Sans KR', sans-serif;
   }
 `
 

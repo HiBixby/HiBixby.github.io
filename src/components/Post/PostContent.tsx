@@ -95,8 +95,13 @@ const MarkdownRenderer = styled.div`
   }
 
   code[class*='language-'],
-  pre[class*='language-'] {
+  pre[class*='language-'],
+  code[class*='language-'] * {
     tab-size: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
   }
 
   // Markdown Responsive Design
