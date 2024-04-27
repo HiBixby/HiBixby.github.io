@@ -101,7 +101,7 @@ const MarkdownRenderer = styled.div`
     tab-size: 2;
     font-family: 'JetBrains Mono', monospace;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: 600;
     font-style: normal;
   }
 
