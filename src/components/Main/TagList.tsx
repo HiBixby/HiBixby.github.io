@@ -1,15 +1,15 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-export type CategoryListProps = {
-  selectedCategory: string
-  categoryList: {
+export type TagListProps = {
+  selectedTag: string
+  tagList: {
     // 프로퍼티 이름은 문자열, 프로퍼티 값은 숫자임을 나타내는 타입 표기 방법
     [key: string]: number
   }
 }
 
-type CategoryItemProps = {
+type TagItemProps = {
   active: boolean
 }
 
@@ -17,9 +17,9 @@ type GatsbyLinkProps = {
   children: ReactNode
   className?: string
   to: string
-} & CategoryItemProps
+} & TagItemProps
 
-const CategoryListWrapper = styled.div`
+const TagListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 768px;
@@ -33,9 +33,9 @@ const CategoryListWrapper = styled.div`
 `
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
+const TagItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   <Link {...props} />
-))<CategoryItemProps>`
+))<TagItemProps>`
   margin-right: 20px;
   padding: 5px 0;
   font-size: 18px;
@@ -51,23 +51,23 @@ const CategoryItem = styled(({ active, ...props }: GatsbyLinkProps) => (
   }
 `
 
-const CategoryList: FunctionComponent<CategoryListProps> = function ({
-  selectedCategory,
-  categoryList,
+const TagList: FunctionComponent<TagListProps> = function ({
+  selectedTag,
+  tagList,
 }) {
   return (
-    <CategoryListWrapper>
-      {Object.entries(categoryList).map(([name, count]) => (
-        <CategoryItem
+    <TagListWrapper>
+      {Object.entries(tagList).map(([name, count]) => (
+        <TagItem
           to={`/?category=${name}`}
-          active={name === selectedCategory}
+          active={name === selectedTag}
           key={name}
         >
           #{name}({count})
-        </CategoryItem>
+        </TagItem>
       ))}
-    </CategoryListWrapper>
+    </TagListWrapper>
   )
 }
 
-export default CategoryList
+export default TagList

@@ -8,7 +8,7 @@ import useInfiniteScroll, {
 
 // 기존에 정의했던 PostListItemType 삭제
 type PostListProps = {
-  selectedCategory: string
+  selectedTag: string
   posts: PostListItemType[]
 }
 export type PostType = {
@@ -18,7 +18,7 @@ export type PostType = {
       title: string
       summary: string
       date: string
-      categories: string[]
+      tags: string[]
       thumbnail: {
         publicURL: string
       }
@@ -41,11 +41,11 @@ const PostListWrapper = styled.div`
   }
 `
 const PostList: FunctionComponent<PostListProps> = function ({
-  selectedCategory,
+  selectedTag,
   posts,
 }) {
   const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
-    selectedCategory,
+    selectedTag,
     posts,
   )
 

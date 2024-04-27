@@ -2,7 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react'
 import styled from '@emotion/styled'
 import GlobalStyle from 'components/Common/GlobalStyle'
 import Footer from 'components/Common/Footer'
-import CategoryList, { CategoryListProps } from 'components/Main/CategoryList'
+import TagList, { TagListProps } from 'components/Main/TagList'
 import Introduction from 'components/Main/Introduction'
 import PostList, { PostType } from 'components/Main/PostList'
 import { graphql } from 'gatsby'
@@ -55,26 +55,25 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   },
 }) {
   const parsed: ParsedQuery<string> = queryString.parse(search)
-  const selectedCategory: string =
-    typeof parsed.category !== 'string' || !parsed.category
-      ? 'All'
-      : parsed.category
+  const selectedTag: string =
+    typeof parsed.tag !== 'string' || !parsed.tag ? 'All' : parsed.tag
 
-  const categoryList = useMemo(
+  const tagList = useMemo(
     () =>
       edges.reduce(
         (
-          list: CategoryListProps['categoryList'],
+          list: TagListProps['tagList'],
           {
             node: {
-              frontmatter: { categories },
+              frontmatter: { tags },
             },
           }, //: PostType,
         ) => {
-          categories.forEach(category => {
-            if (list[category] === undefined) list[category] = 1
-            else list[category]++
-          })
+          tags &&
+            tags.forEach(tag => {
+              if (list[tag] === undefined) list[tag] = 1
+              else list[tag]++
+            })
 
           list['All']++
 
@@ -92,11 +91,8 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
       image={publicURL}
     >
       <Introduction profileImage={gatsbyImageData} />
-      <CategoryList
-        selectedCategory={selectedCategory}
-        categoryList={categoryList}
-      />
-      <PostList selectedCategory={selectedCategory} posts={edges} />
+      <TagList selectedTag={selectedTag} tagList={tagList} />
+      <PostList selectedTag={selectedTag} posts={edges} />
     </Template>
   )
 }
@@ -125,7 +121,7 @@ export const getPostList = graphql`
             title
             summary
             date(formatString: "YYYY.MM.DD.")
-            categories
+            tags
             thumbnail {
               childImageSharp {
                 gatsbyImageData(width: 768, height: 400)

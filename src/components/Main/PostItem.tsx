@@ -50,14 +50,14 @@ const Date = styled.div`
   opacity: 0.7;
 `
 
-const Category = styled.div`
+const Tag = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
   margin: 10px -5px;
 `
 
-const CategoryItem = styled.div`
+const TagItem = styled.div`
   margin: 2.5px 5px;
   padding: 3px 5px;
   border-radius: 3px;
@@ -83,7 +83,7 @@ const Summary = styled.div`
 const PostItem: FunctionComponent<PostItemProps> = function ({
   title,
   date,
-  categories,
+  tags,
   summary,
   thumbnail: {
     childImageSharp: { gatsbyImageData },
@@ -97,11 +97,11 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
-        <Category>
-          {categories.map(item => (
-            <CategoryItem key={item}>{item}</CategoryItem>
+        <Tag>
+          {tags.map(item => (
+            <TagItem key={item}>{item}</TagItem>
           ))}
-        </Category>
+        </Tag>
         <Summary>{summary}</Summary>
       </PostItemContent>
     </PostItemWrapper>

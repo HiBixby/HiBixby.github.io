@@ -39,7 +39,7 @@ const BackgroundImage = styled((props: GatsbyImgProps) => (
 const PostHead: FunctionComponent<PostHeadProps> = function ({
   title,
   date,
-  categories,
+  tags,
   thumbnail,
   timeToRead,
 }) {
@@ -49,7 +49,7 @@ const PostHead: FunctionComponent<PostHeadProps> = function ({
       <PostHeadInfo
         title={title}
         date={date}
-        categories={categories}
+        tags={tags}
         timeToRead={timeToRead}
       />
     </PostHeadWrapper>

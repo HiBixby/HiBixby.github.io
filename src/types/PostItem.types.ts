@@ -3,7 +3,8 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 export type PostFrontmatterType = {
   title: string
   date: string
-  categories: string[]
+  category: string
+  tags: string[]
   summary: string
   thumbnail: {
     childImageSharp: {
@@ -27,7 +28,7 @@ export type PostPageItemType = {
   node: {
     html: string
     timeToRead: number
-    tableOfContents:string,
+    tableOfContents: string
     frontmatter: PostFrontmatterType
   }
 }

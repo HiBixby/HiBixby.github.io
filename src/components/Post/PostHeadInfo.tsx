@@ -7,7 +7,7 @@ import { Link } from 'gatsby'
 export type PostHeadInfoProps = {
   title: string
   date: string
-  categories: string[]
+  tags: string[]
   timeToRead: number
 }
 
@@ -84,11 +84,10 @@ const PostData = styled.div`
 const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
   title,
   date,
-  categories,
+  tags,
   timeToRead,
 }) {
   const goBackPage = () => window.history.back()
-
   return (
     <PostHeadInfoWrapper>
       <PrevPageIcon to="/">
@@ -96,7 +95,7 @@ const PostHeadInfo: FunctionComponent<PostHeadInfoProps> = function ({
       </PrevPageIcon>
       <Title>{title}</Title>
       <PostData>
-        <div>{categories.join(' / ')}</div>
+        <div>{tags.join(' / ')}</div>
         <div>{date}</div>
       </PostData>
       <div>{timeToRead} min read</div>
