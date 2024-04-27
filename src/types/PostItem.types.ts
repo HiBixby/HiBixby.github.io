@@ -27,6 +27,7 @@ export type PostPageItemType = {
   node: {
     html: string
     timeToRead: number
+    tableOfContents:string,
     frontmatter: PostFrontmatterType
   }
 }

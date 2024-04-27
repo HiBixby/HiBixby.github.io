@@ -5,6 +5,8 @@ import Template from 'components/Common/Template'
 import PostHead from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
+import TOC from 'components/Post/TOC'
+import styled from '@emotion/styled'
 
 type PostTemplateProps = {
   data: {
@@ -17,6 +19,11 @@ type PostTemplateProps = {
   }
 }
 
+const ContentWrapper = styled.div`
+  display: flex;
+  position: relative;
+`
+
 const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
     allMarkdownRemark: { edges },
@@ -27,6 +34,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     node: {
       html,
       timeToRead,
+      tableOfContents,
       frontmatter: {
         title,
         summary,
@@ -49,7 +57,10 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         thumbnail={gatsbyImageData}
         timeToRead={timeToRead}
       />
-      <PostContent html={html} />
+      <ContentWrapper>
+        <PostContent html={html} />
+        <TOC tableOfContents={tableOfContents} />
+      </ContentWrapper>
       <CommentWidget />
     </Template>
   )
@@ -63,6 +74,7 @@ export const queryMarkdownDataBySlug = graphql`
         node {
           html
           timeToRead
+          tableOfContents
           frontmatter {
             title
             summary
