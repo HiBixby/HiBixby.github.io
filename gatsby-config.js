@@ -85,6 +85,7 @@ module.exports = {
             options: {
               classPrefix: 'language-',
               showLineNumbers: true,
+              showDiffHighlight: true,
             },
           },
           {

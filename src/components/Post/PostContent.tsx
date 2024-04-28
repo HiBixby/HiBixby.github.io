@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
+import './prism-one-dark.css'
 
 interface PostContentProps {
   html: string
@@ -133,13 +134,13 @@ const MarkdownRenderer = styled.div`
     }
   }
   .gatsby-highlight-code-line {
-    background-color: #feb;
+    background-color: rgba(125, 211, 252, 0.15);
     display: block;
     margin-right: -1em;
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 0.75em;
-    border-left: 0.25em solid #f99;
+    border-left: 0.25em solid rgb(56 189 248);
   }
   /**
  * Add back the container background-color, border-radius, padding, margin
@@ -182,7 +183,7 @@ const MarkdownRenderer = styled.div`
  */
 
   .gatsby-highlight {
-    background-color: #fdf6e3;
+    background: hsl(220, 13%, 18%);
     border-radius: 0.3em;
     margin: 0.5em 0;
     padding: 1em;
@@ -198,6 +199,57 @@ const MarkdownRenderer = styled.div`
     .line-numbers-rows {
       border-right: none;
     }
+  }
+  /**
+We prefix all selectors with pre:not(.language-diff), to ensure we leave 
+git diffs intact. 
+But all other diffs (e.g., JavaScript, C++, etc...), will have 
+the changes applied.
+*/
+
+  /* Hide the diff tokens "column" of diff files code blocks (the first 
+   character of each line). */
+  pre:not(.language-diff) .token.prefix.inserted,
+  pre:not(.language-diff) .token.prefix.deleted,
+  pre:not(.language-diff) .token.prefix.unchanged {
+    user-select: none;
+    color: transparent;
+  }
+
+  /* On each line that would have had a "+" or "-" token, add that same token
+ as an absolutely positioned character to the left of the code block. */
+  pre:not(.language-diff) .token.prefix.inserted::after {
+    content: '+';
+    position: absolute;
+    margin-left: -1rem;
+    user-select: none;
+    color: green;
+  }
+
+  pre:not(.language-diff) .token.prefix.deleted::after {
+    content: '-';
+    position: absolute;
+    margin-left: -1rem;
+    user-select: none;
+    color: red;
+  }
+
+  /** Adjust the margins and paddings of diff codeblocks to ensure the
+ highlighted row is not blocked by the artificial token created above. */
+  pre:not(.language-diff).diff-highlight > code .token.inserted:not(.prefix),
+  pre:not(.language-diff) > code.diff-highlight .token.inserted:not(.prefix) {
+    margin-right: -1rem;
+    margin-left: -1rem;
+    padding-right: 1em;
+    padding-left: 1rem;
+  }
+
+  pre:not(.language-diff).diff-highlight > code .token.deleted:not(.prefix),
+  pre:not(.language-diff) > code.diff-highlight .token.deleted:not(.prefix) {
+    margin-right: -1rem;
+    margin-left: -1rem;
+    padding-right: 1em;
+    padding-left: 1rem;
   }
 `
 
