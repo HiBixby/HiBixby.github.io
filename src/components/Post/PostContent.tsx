@@ -101,7 +101,7 @@ const MarkdownRenderer = styled.div`
     tab-size: 2;
     font-family: 'JetBrains Mono', monospace;
     font-optical-sizing: auto;
-    font-weight: <weight>;
+    font-weight: 600;
     font-style: normal;
   }
 
@@ -193,6 +193,11 @@ const MarkdownRenderer = styled.div`
     padding: 0;
     padding-left: 2.8em;
     overflow: initial;
+  }
+  .line-numbers {
+    .line-numbers-rows {
+      border-right: none;
+    }
   }
 `
 
