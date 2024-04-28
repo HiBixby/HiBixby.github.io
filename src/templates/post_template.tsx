@@ -7,6 +7,8 @@ import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
 import TOC from 'components/Post/TOC'
 import styled from '@emotion/styled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 type PostTemplateProps = {
   data: {
@@ -23,6 +25,29 @@ const ContentWrapper = styled.div`
   display: flex;
   position: relative;
 `
+
+const ScrollToTopButton = styled.div`
+  width: 2.5rem;
+  height: 2.5rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #eff1f5;
+  color: #4c4f69;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+`
+function ScrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+}
 
 const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
@@ -62,6 +87,9 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         <TOC tableOfContents={tableOfContents} />
       </ContentWrapper>
       <CommentWidget />
+      <ScrollToTopButton onClick={ScrollToTop}>
+        <FontAwesomeIcon icon={faArrowUp} />
+      </ScrollToTopButton>
     </Template>
   )
 }
