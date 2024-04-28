@@ -31,6 +31,12 @@ plugins: [
 
 ### 5. diff 테스트
 
+```diff
+const a = 1;
++ const b = 2;
+- const b = 3;
+```
+
 ```diff-javascript
 const a = 1;
 + const b = 2;
@@ -58,6 +64,6 @@ _안녕하세요_
 
 ### 8. 인용
 
-> This is a first blockqute. > This is a second blockqute. > > This is a third blockqute.
+> This is a first blockqute. > This is a second blockqute. > This is a third blockqute.
 
 ---
