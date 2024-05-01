@@ -58,11 +58,7 @@ const TagList: FunctionComponent<TagListProps> = function ({
   return (
     <TagListWrapper>
       {Object.entries(tagList).map(([name, count]) => (
-        <TagItem
-          to={`/?category=${name}`}
-          active={name === selectedTag}
-          key={name}
-        >
+        <TagItem to={`/?tag=${name}`} active={name === selectedTag} key={name}>
           #{name}({count})
         </TagItem>
       ))}
