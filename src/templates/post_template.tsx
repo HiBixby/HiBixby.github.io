@@ -60,19 +60,11 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
       html,
       timeToRead,
       tableOfContents,
-      frontmatter: {
-        title,
-        summary,
-        date,
-        tags,
-        thumbnail: {
-          childImageSharp: { gatsbyImageData },
-          publicURL,
-        },
-      },
+      frontmatter: { title, summary, date, tags, thumbnail },
     },
   } = edges[0]
-
+  const gatsbyImageData = thumbnail?.childImageSharp?.gatsbyImageData
+  const publicURL = thumbnail?.publicURL
   return (
     <Template title={title} description={summary} url={href} image={publicURL}>
       <PostHead

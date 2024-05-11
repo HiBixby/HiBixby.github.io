@@ -70,7 +70,7 @@ const TagItem = styled.div`
 const Summary = styled.div`
   display: -webkit-box;
   overflow: hidden;
-  margin-top: auto;
+  /* margin-top: auto; */
   text-overflow: ellipsis;
   white-space: normal;
   overflow-wrap: break-word;
@@ -85,15 +85,17 @@ const PostItem: FunctionComponent<PostItemProps> = function ({
   date,
   tags,
   summary,
-  thumbnail: {
-    childImageSharp: { gatsbyImageData },
-  },
+  thumbnail,
   link,
 }) {
+  const gatsbyImageData = thumbnail
+    ? thumbnail.childImageSharp?.gatsbyImageData
+    : null
   return (
     <PostItemWrapper to={link}>
-      <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
-
+      {gatsbyImageData && (
+        <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
+      )}
       <PostItemContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
