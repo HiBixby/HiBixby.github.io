@@ -9,6 +9,7 @@ import TOC from 'components/Post/TOC'
 import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import GiscusWidget from 'components/Post/GiscusWidget'
 
 type PostTemplateProps = {
   data: {
@@ -78,7 +79,8 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
         <PostContent html={html} />
         <TOC tableOfContents={tableOfContents} />
       </ContentWrapper>
-      <CommentWidget />
+      {/* <CommentWidget /> */}
+      <GiscusWidget />
       <ScrollToTopButton onClick={ScrollToTop}>
         <FontAwesomeIcon icon={faArrowUp} />
       </ScrollToTopButton>
