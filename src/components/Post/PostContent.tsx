@@ -62,8 +62,10 @@ const MarkdownRenderer = styled.div`
   blockquote {
     margin: 30px 0;
     padding: 5px 15px;
-    border-left: 2px solid #000000;
-    font-weight: 800;
+    border-left: 4px solid #000000;
+    background-color: #f8f9fa;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
   }
 
   // Adjust List Element Style
